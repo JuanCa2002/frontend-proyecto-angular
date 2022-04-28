@@ -1,0 +1,53 @@
+
+
+<header>
+  <div class="contenedor">
+    <a href="/pagina-principal"><h2 class="logotipo">Netfex</h2></a>
+    <nav class="navbar navbar-expand-lg ">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item mt-1" *ngIf="isLogged">
+              <a class="nav-link active" routerLink="/home" >Inicio</a>
+            </li>
+            <li class="nav-item mt-1" *ngIf="isAdmin">
+              <a class="nav-link" routerLink="/peliculas"  >Películas</a>
+            </li>
+
+            <li class="nav-item mt-1"*ngIf="isAdmin">
+              <a class="nav-link " routerLink="/registrar-pelicula" >Añadir película</a>
+            </li>
+            <form class="d-flex" *ngIf="isLogged">
+              <input class="buscar form-control me-2" type="search" placeholder="  Buscar película" (keyup.enter)="buscarPelicula(buscarTexto.value)" #buscarTexto>
+              <button (click)="buscarPelicula(buscarTexto.value)" class="boton-buscar" type="button">Buscar</button>
+            </form>
+            <br>
+            <button *ngIf="!isLogged" routerLink="/login" class="btn btn-danger" type="button"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</button>
+            <button *ngIf="!isLogged" routerLink="/registro" class="btn btn-primary" type="button"><i class="fas fa-user-plus"></i> Registrarse</button>
+            <li *ngIf="isLogged" class="nav-item dropdown">
+              <a *ngIf="retrievedImage!=null" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img [src]="retrievedImage" id="imagen-perfil" ></a>
+              <a *ngIf="retrievedImage==null"class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="assets/img/Default-user.png" id="imagen-perfil2" ></a>
+              <ul class="menu dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="card" style="width: 18rem;">
+                  <img *ngIf="retrievedImage==null" id="imagen-drop" src="assets/img/Default-user.png" class="card-img-top" >
+                  <img *ngIf="retrievedImage!=null" id="imagen-drop2" [src]="retrievedImage" class="card-img-top" >
+                  <div class="card-body">
+                    <h5 class="text-center card-title">{{nombreUsuario}}</h5>
+                  </div>
+                </div>
+                <li><a routerLink="/perfil" class="dropdown-item" href="#">Perfil</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a routerLink="/administrar-contrasena" class="dropdown-item" >Mis contraseñas</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a type="button" class="dropdown-item" (click)="onLogOut()">Cerrar sesión</a></li>
+              </ul>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+

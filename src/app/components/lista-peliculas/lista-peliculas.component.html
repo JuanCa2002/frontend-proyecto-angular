@@ -1,0 +1,70 @@
+<app-navbar></app-navbar>
+<div class="container">
+<br>
+<h1 class="text-center">Gestión de películas</h1>
+<br>
+<div class="row ">
+  <div class="col-6"></div>
+  <div class="col-4">
+    <div class="form-group mb-3">
+      <label for="selector"  class="form-label"><strong>Escoga un género para filtrar la película :</strong></label>
+      <select class="form-select"
+              id="selector"
+              name="selector"
+              [(ngModel)]="selector"
+              (ngModelChange)="listarPeliculasPorGenero(selector)"
+      >
+        <option  selected value="0">Seleccione un género</option>
+        <option value="Accion">Acción</option>
+        <option Selected value="Aventura">Aventura</option>
+        <option value="Comedia">Comedia</option>
+        <option value="Drama">Drama</option>
+        <option value="Fantasia">Fantasía</option>
+        <option value="Musical">Musical</option>
+        <option value="Horror">Horror</option>
+        <option value="Suspenso">Suspenso</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-2 mt-3">
+    <button type="button" class="btn btn-success mt-3" (click)="removeFilter()"> Remover Filtro</button>
+  </div>
+  </div>
+  <div>
+    <table class="table border-danger">
+      <thead class="table-dark">
+      <tr>
+        <th scope="col">Título</th>
+        <th scope="col" width="180px" class="text-center">Fecha de estreno</th>
+        <th scope="col">Género</th>
+        <th scope="col">Director</th>
+        <th scope="col-2"></th>
+        <th scope="col-2">Acciones</th>
+        <th scope="col-2"></th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let pelicula of peliculas">
+        <td>{{pelicula.titulo}}</td>
+        <td class="text-center">{{pelicula.fecha_estreno}}</td>
+        <td>{{pelicula.genero}}</td>
+        <td>{{pelicula.director}}</td>
+        <td>
+          <button type="button" class="btn btn-primary" (click)="actualizarPelicula(pelicula.id)">Editar</button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-danger" (click)="eliminarPelicula(pelicula.id,pelicula.imagen)">Eliminar</button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-warning" (click)="mostrarDetallesPelicula(pelicula.id)">Detalles</button>
+        </td>
+
+      </tr>
+
+      </tbody>
+    </table>
+    <br>
+    <br>
+  </div>
+</div>

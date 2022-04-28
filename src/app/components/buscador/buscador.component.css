@@ -1,0 +1,24 @@
+:root{
+  --rojo:#E50914;
+  --fondo:#141414;
+}
+
+h3{
+  font-family: 'Bebas neue',cursive;
+  font-weight: normal;
+  color: var(--rojo);
+  font-size: 40px;
+}
+
+h1{
+  font-family: 'Bebas neue',cursive;
+  font-weight: normal;
+  color: var(--rojo);
+  font-size: 40px;
+}
+
+.hover:hover{
+  transform: scale(1.2);
+  transform-origin: center;
+}
+

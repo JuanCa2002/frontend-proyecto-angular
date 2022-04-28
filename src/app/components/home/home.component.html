@@ -1,0 +1,68 @@
+<app-navbar></app-navbar>
+<main>
+  <script src="assets/js/carrusel.js"></script>
+  <div class="pelicula-principal" id="pelicula-principal">
+    <div class="contenedor">
+      <h3 class="titulo">{{pelicula.titulo}}</h3>
+      <p class="descripcion">{{pelicula.descripcion}}</p>
+      <button role="button"  (click)="mostrarDetallesPelicula(pelicula.id)" class="boton"><i class="fas fa-play"></i>Reproducir</button>
+      <button role="button"  (click)="mostrarDetallesPelicula(pelicula.id)" class="boton"><i class="fas fa-info-circle"></i>Más Información</button>
+    </div>
+  </div>
+
+
+<div class="peliculas-recomendadas contenedor">
+  <div class="contenedor-titulo-controles">
+    <h3>Películas recomendadas</h3>
+    <div class="indicadores">
+
+    </div>
+  </div>
+  <div class="contenedor-principal" >
+    <button type="button" (click)="funcionCarouselIzquierda()"   class="flecha-izquierda"><i class="fas fa-arrow-left"></i></button>
+    <div class="contenedor-carousel">
+      <div class="carousel" >
+        <div class="pelicula" *ngFor="let pelicula of peliculasCompletas">
+          <a href="/detalles-pelicula/{{pelicula.id}}"><img [src]="pelicula.retrieveImage"  ></a>
+        </div>
+      </div>
+    </div>
+    <button type="button" (click)="funcionfuncionCarouselDerecha()"  class="flecha-derecha"><i class="fas fa-arrow-right"></i></button>
+
+  </div>
+</div>
+<br>
+<div class="peliculas-recomendadas contenedor">
+<div class="contenedor-titulo-controles">
+  <h3>Próximos estrenos</h3>
+  <div class="indicadores">
+
+  </div>
+</div>
+<div class="contenedor-principal" >
+  <button type="button" (click)="funcionCarousel2Izquierda()"  id=" flecha-izquierda" class="flecha-izquierda"><i class="fas fa-arrow-left"></i></button>
+  <div class="contenedor-carousel2">
+    <div class="carousel" >
+      <div class="pelicula" *ngFor="let pelicula of proximosEstrenos">
+        <a href="/detalles-pelicula/{{pelicula.id}}" ><img [src]="pelicula.retrieveImage" ></a>
+      </div>
+    </div>
+  </div>
+  <button type="button"  (click)="funcionfuncionCarousel2Derecha()" id="flecha-derecha" class="flecha-derecha"><i class="fas fa-arrow-right"></i></button>
+
+</div>
+</div>
+<br>
+<br>
+<br>
+</main>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+<div class="contenedor">
+<h1 class="text-center">Buscando por:{{termino}}</h1>
+<div class="row" *ngIf="peliculasEncontradas.length==0">
+  <div class="col-md-12">
+    <div class="alert alert-info" role="alert">
+      No existen resultados con el término: {{termino}}
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<div *ngFor="let pelicula of peliculasCompletas">
+  <div class=" container mt-3">
+    <div class="row mt-3 ">
+      <div class="col-5">
+        <div class="card hover" style="width: 25rem;">
+          <h1 class="text-center"> {{pelicula.titulo}}</h1>
+          <a href="/detalles-pelicula/{{pelicula.id}}"><img class="card-img-top " [src]="pelicula.retrieveImage" height="460" width="200" alt="Card image cap"></a>
+        </div>
+        <br>
+        <br>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+
+</div>
+</div>

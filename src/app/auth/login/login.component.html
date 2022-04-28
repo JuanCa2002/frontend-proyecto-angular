@@ -1,0 +1,42 @@
+<div class="body">
+  <div class="text-center" *ngIf="isLogged; else loggedOut">
+  <h2>Ya has iniciado sesion</h2>
+</div>
+<ng-template #loggedOut>
+  <app-navbar ></app-navbar>
+      <div class="container">
+        <div class="container__form">
+          <img src="assets/img/kisspng-padlock-computer-icons-computer-security-padlock-5ab636467447e3.9947563015218908864763.png">
+          <h2>Iniciar sesión</h2>
+           <form #f="ngForm"  (ngSubmit)="onLogin()" novalidate>
+             <div class="form-group">
+               <label for="nombreUsuario">Nombre usuario</label>
+               <input
+                 type="text"
+                 name="nombreUsuario"
+                 id="nombreUsuario"
+                 class="form-control"
+               [(ngModel)]="nombreUsuario" required>
+             </div>
+             <div class="form-group">
+               <label for="password">Contraseña</label>
+               <input
+                 type="password"
+                 name="password"
+                 id="password"
+                 class="form-control"
+                 [(ngModel)]="password" required>
+             </div>
+             <div class="form-group text-center">
+               <button class="cta-1"  [disabled]="!f.valid">Iniciar Sesión</button>
+             </div>
+             <div class="text-center mt-3">
+              <a routerLink="/sendEmail">¿Olvidaste tu contraseña?</a>
+             </div>
+           </form>
+        <div *ngIf="f.submitted && isLoginFail" class="alert alert-danger mt-3">Datos erróneos</div>
+      </div>
+      </div>
+
+</ng-template>
+</div>

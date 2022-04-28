@@ -1,0 +1,43 @@
+.contenedor{
+  background-image:linear-gradient(rgba(0,0,0,.50) 50%,rgba(0,0,0, .50) 100%), url("../../../assets/img/seguridad.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  padding-left: 300px;
+  padding-right: 300px;
+  padding-bottom: 150px;
+}
+
+label{
+   color: #f8dc00;
+   font-weight: bold;
+   margin-bottom: 10px;
+   font-family: 'Oxygen', sans-serif;
+}
+
+.formulario{
+  margin-left: 200px;
+  margin-right: 200px;
+}
+h1{
+  font-weight: bold;
+  margin-bottom: 80px;
+  color: #f8dc00;
+  font-family: 'PT Sans Narrow', sans-serif;
+}
+.separador{
+  margin-bottom: 65px;
+}
+button{
+  color: white;
+  background-color: #E50914;
+  font-family: 'Oxygen', sans-serif;
+}
+button:hover{
+  color: white;
+  background-color: #8d0000;
+}
+small{
+  font-weight: bold;
+  color: yellow;
+}
+

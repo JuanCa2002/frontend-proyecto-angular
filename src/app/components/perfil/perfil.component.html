@@ -1,0 +1,66 @@
+<app-navbar></app-navbar>
+<div class="contenedor">
+    <br>
+    <br>
+    <h5 class="text-center mb-3  ">{{nombreUsuario}}</h5>
+    <div class="img">
+      <img *ngIf="retrievedImage==null" src="assets/img/Default-user.png"  align="center" alt="...">
+      <img *ngIf="retrievedImage!=null" [src]="retrievedImage"  align="center" alt="...">
+    </div>
+<div class="formulario">
+<form [formGroup]="formReactive" (ngSubmit)="actualizarPerfil()">
+  <div class="mb-3">
+    <label for="nombreCompleto" class="form-label">Nombre Completo: </label>
+    <input type="text"
+           class="form-control"
+           id="nombreCompleto"
+           [(ngModel)]="nuevoUsuario.nombre"
+           formControlName="nombreCompleto"
+           name="nombreCompleto" >
+    <small *ngIf="nombreCompletoNoValido" class="form-text text-danger">
+      Campo requerido, y solo se admite texto.
+    </small>
+
+  </div>
+  <div class="mb-3">
+    <label for="nombreUsuario" class="form-label">Nombre usuario: </label>
+    <input type="text"
+           class="form-control"
+           [(ngModel)]="nuevoUsuario.nombreUsuario"
+           id="nombreUsuario"
+           formControlName="nombreUsuario"
+           name="nombreUsuario" >
+    <small *ngIf="nombreUsuarioNoValido" class="form-text text-danger">
+      Campo requerido
+    </small>
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Correo Electrónico</label>
+    <input type="email"
+           class="form-control"
+           [(ngModel)]="nuevoUsuario.email"
+           id="email"
+           formControlName="email"
+           name="email">
+    <small *ngIf="correoNoValido" class="form-text text-danger">
+       Formato de correo no valido.
+    </small>
+  </div>
+
+  <div class="form-group mt-3">
+    <label for="imagen" class="form-label">Imagen de perfil</label>
+    <input type="file"
+           (change)="selectFile($event)"
+           class="form-control"
+           id="imagen"
+           name="file"
+           formControlName="imagen"
+           placeholder="Ingrese su imagen de perfil">
+  </div>
+   <div class="text-center ">
+      <button type="submit" class="btn mt-3 mb-5">Actualizar</button>
+   </div>
+</form>
+</div>
+</div>
+

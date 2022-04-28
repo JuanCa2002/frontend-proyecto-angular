@@ -1,0 +1,42 @@
+<app-navbar></app-navbar>
+<div class="contenedor mt-0">
+  <div class="cuerpo">
+    <br>
+    <br>
+    <br>
+  <h1 class="text-center"> {{pelicula.titulo}}</h1>
+<div class="row mt-3 ">
+  <div class="col-5">
+    <div class="card " style="width: 25rem;">
+      <img class="card-img-top " [src]="retrievedImage" height="560" width="500" alt="Card image cap">
+    </div>
+    <br>
+    <br>
+    <h3>Trailer</h3>
+    <youtube-player id="trailer" videoId="{{pelicula.urlVideo}}" [playerVars]="playerConfig" [height]="560" [width]="1160"></youtube-player>
+  </div>
+  <div class="col-7">
+    <div class="card">
+      <div class="card-body">
+      <h3>Descripción</h3>
+      <p class="card-text"> {{pelicula.descripcion}}</p>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><strong>Director:</strong> {{pelicula.director}}</li>
+          <li class="list-group-item"><strong>Año de estreno:</strong> {{pelicula.fecha_estreno}}</li>
+          <li class="list-group-item"><strong>Presupuesto:</strong> {{pelicula.presupuesto}}</li>
+          <li class="list-group-item"><strong>Género:</strong> {{pelicula.genero}}</li>
+          <li class="list-group-item"><strong>Estado:</strong> {{pelicula.estado}}</li>
+        </ul>
+    </div>
+
+    </div>
+  </div>
+</div>
+</div>
+<br>
+<br>
+</div>
+
+
+
+

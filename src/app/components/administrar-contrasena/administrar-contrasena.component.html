@@ -1,0 +1,42 @@
+<app-navbar></app-navbar>
+<div class="contenedor">
+  <br>
+  <br>
+<h1 class="text-center ">Editar contraseña</h1>
+  <div class="formulario">
+<form  [formGroup]="formReactive" (ngSubmit)="actualizarContrasena()">
+  <div class="separador">
+    <label for="contrasenaNueva" class="form-label">Ingrese la contraseña nueva: </label>
+    <input [(ngModel)]="contrasenaNueva"
+           type="password"
+           class="form-control mb-3"
+           formControlName="newPassword"
+           id="contrasenaNueva"
+           placeholder="contraseña nueva"
+           name="contrasenaNueva">
+    <small *ngIf="newPasswordNoValida" class="form-text">
+      Se necesita mínimo 8 carácteres
+    </small>
+  </div>
+  <div class="separador">
+    <label for="confirmarContrasena" class="form-label"> Confirmar contraseña nueva: </label>
+    <input [(ngModel)]="confimarContrasena"
+           type="password"
+           class="form-control mb-3"
+           formControlName="confirmPassword"
+           id="confirmarContrasena"
+           placeholder="confirmar contraseña"
+           name="confirmarContrasena">
+    <small *ngIf="confirmPasswordNoValida" class="form-text ">
+      Se necesita mínimo 8 carácteres
+    </small>
+  </div>
+  <div class="d-grid gap-2 text-center">
+    <button type="submit"  class="btn mb-5">Guardar</button>
+  </div>
+
+</form>
+</div>
+
+</div>
+

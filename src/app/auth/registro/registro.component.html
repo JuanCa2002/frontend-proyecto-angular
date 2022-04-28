@@ -1,0 +1,71 @@
+<div class="contenedor-central">
+  <app-navbar></app-navbar>
+<div class="body">
+<div class="container-form sign-up">
+  <div class="welcom-back">
+    <div class="message">
+      <p class="texto-validacion">Si ya tienes una cuenta porfavor inicia sesión aquí</p>
+      <button (click)="irInicioSesion()" class="sign-up-btn">Iniciar Sesión</button>
+    </div>
+  </div>
+  <form class="formulario" [formGroup]="formReactive" (ngSubmit)="registrarNuevoUsuario()" >
+    <h2 class="create-account">Crear una cuenta</h2>
+    <p class="cuenta-gratis">Crear una cuenta gratis</p>
+    <div class="mb-3">
+      <label for="nombreCompleto" class="form-label">Nombre Completo: </label>
+      <input type="text"
+             class="form-control"
+             id="nombreCompleto"
+             [(ngModel)]="nuevoUsuario.nombre"
+             formControlName="nombreCompleto"
+             required
+             name="nombreCompleto" >
+      <small *ngIf="nombreCompletoNoValido" class="form-text text-danger">
+        El campo es requerido y no puede contener dígitos, solo texto.
+      </small>
+    </div>
+    <div class="mb-3">
+      <label for="nombreUsuario" class="form-label">Nombre usuario: </label>
+      <input type="text"
+             class="form-control"
+             [(ngModel)]="nuevoUsuario.nombreUsuario"
+             id="nombreUsuario"
+             formControlName="nombreUsuario"
+             name="nombreUsuario" >
+      <small *ngIf="nombreUsuarioNoValido" class="form-text text-danger">
+        Campo requerido
+      </small>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Correo Electrónico</label>
+      <input type="email"
+             class="form-control"
+             [(ngModel)]="nuevoUsuario.email"
+             id="email"
+             formControlName="correo"
+             name="email">
+      <small *ngIf="correoNoValido" class="form-text text-danger">
+        Formato de correo no valido
+      </small>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password"
+             class="form-control"
+             [(ngModel)]="nuevoUsuario.password"
+             id="password"
+             formControlName="password"
+             name="password">
+      <small *ngIf="passwordNoValida" class="form-text text-danger">
+        Ingrese mínimo 8 carácteres
+      </small>
+    </div>
+
+    <button type="submit" class="boton">Registrar</button>
+  </form>
+  <div *ngIf="isRegisterFail">
+    {{errorMensaje}}
+  </div>
+</div>
+</div>
+</div>

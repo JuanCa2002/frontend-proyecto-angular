@@ -1,0 +1,7 @@
+{
+  "/update": {
+    "target": "http://localhost:8081/api/v1/peliculas",
+    "secure": false,
+    "logLevel": "debug"
+  }
+}

@@ -1,0 +1,58 @@
+img{
+  border-radius: 150%;
+  height: 250px;
+  width: 250px;
+
+}
+
+.img{
+  text-align: center;
+}
+
+.card{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h5{
+  font-weight: bold;
+  margin-bottom: 300px;
+  font-family: 'PT Sans Narrow', sans-serif;
+  color: #ffdb00;
+  font-size: 40px;
+}
+
+.formulario{
+  margin-left: 200px;
+  margin-right: 200px;
+}
+
+label{
+  color: #ffdb00;
+  font-weight: bold;
+  font-family: 'Oxygen', sans-serif;
+}
+
+input{
+  font-weight: bold;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+button{
+  color: white;
+  background-color: #E50914;
+  font-family: 'Oxygen', sans-serif;
+}
+
+button:hover{
+  color: white;
+  background-color: #8d0000;
+}
+.contenedor{
+  background-image:linear-gradient(rgba(0,0,0,.50) 50%,rgba(0,0,0, .50) 100%),url("../../../assets/img/avatar-profile-pink-neon-icon-brick-wall-background-pink-neon-icon-vector.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  padding-left: 300px;
+  padding-right: 300px;
+}
+
