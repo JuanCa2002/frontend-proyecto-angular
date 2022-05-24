@@ -1,13 +1,16 @@
-<app-navbar></app-navbar>
+
+
 <main>
-  <script src="assets/js/carrusel.js"></script>
-  <div class="pelicula-principal" id="pelicula-principal">
+  <div class="contenedor-main" id="pelicula-principal">
+    <app-navbar></app-navbar>
+  <div class="pelicula-principal" >
     <div class="contenedor">
       <h3 class="titulo">{{pelicula.titulo}}</h3>
       <p class="descripcion">{{pelicula.descripcion}}</p>
       <button role="button"  (click)="mostrarDetallesPelicula(pelicula.id)" class="boton"><i class="fas fa-play"></i>Reproducir</button>
       <button role="button"  (click)="mostrarDetallesPelicula(pelicula.id)" class="boton"><i class="fas fa-info-circle"></i>Más Información</button>
     </div>
+  </div>
   </div>
 
 

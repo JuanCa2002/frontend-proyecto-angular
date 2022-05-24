@@ -1,0 +1,19 @@
+
+.usuarios{
+  /*margin-left: 25px;*/
+  align-items: center;
+  padding-left: 120px;
+  padding-bottom: 250px;
+}
+
+.peliculas{
+  align-items: center;
+  padding-left: 80px;
+  padding-bottom: 250px;
+}
+
+p{
+  color: red;
+  size: 250px;
+}
+

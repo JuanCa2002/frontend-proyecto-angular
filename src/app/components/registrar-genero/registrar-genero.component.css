@@ -1,5 +1,9 @@
-td{
-  background: white;
+label{
+  color: white;
+}
+
+.container{
+  margin-bottom: 103px;
 }
 
 h1{
@@ -7,12 +11,4 @@ h1{
   font-weight: normal;
   color: var(--rojo);
   font-size: 40px;
-}
-
-label{
-  color: white;
-}
-mat-paginator {
-  text-align: center;
-  color: white;
 }

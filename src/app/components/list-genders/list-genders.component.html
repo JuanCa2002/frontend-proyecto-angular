@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+<div class="container">
+<table  class="table border-danger">
+  <thead class="table-dark">
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Nombre</th>
+    <th  class="text-center" scope="col-2">Acciones</th>
+    <th scope="col-2"></th>
+  </tr>
+  </thead>
+  <tbody class="table-light">
+  <tr *ngFor="let genero of generos; let i = index">
+    <td>{{i+1}}</td>
+    <td>{{genero.nombreGenero}}</td>
+    <td>
+      <button type="button" class="btn btn-primary" (click)="actualizarGenero(genero.id)">Editar</button>
+    </td>
+    <td>
+      <button type="button" class="btn btn-danger" (click)="eliminarGenero(genero.id)">Eliminar</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <div class="row">
+    <div class="col-6">
+    <button type="button" class="btn btn-success" (click)="registrarGenero()"><i class="fas fa-plus"></i> Registrar nueva </button>
+    </div>
+  </div>
+</div>
+

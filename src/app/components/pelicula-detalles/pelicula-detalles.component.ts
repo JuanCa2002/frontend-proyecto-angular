@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PeliculaService} from "../../services/pelicula.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Pelicula} from "../../pelicula";
+import {Pelicula} from "../../models/pelicula";
 
 @Component({
   selector: 'app-pelicula-detalles',
@@ -17,22 +17,22 @@ export class PeliculaDetallesComponent implements OnInit {
   retrieveResonse: any;
   message: string;
   imageName: any;
+  calificacion:number=1;
+  calificacionTotal:number;
   trailer:boolean=false;
 
 
-
-
-
-
-  constructor(private peliculaService:PeliculaService, private route:ActivatedRoute) { }
+  constructor(private peliculaService:PeliculaService, private route:ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
+
     const tag = document.createElement('script');
     tag.src = 'https://www.youtube.com/iframe_api';
     document.body.appendChild(tag);
     this.id= this.route.snapshot.params['id'];
     this.peliculaService.obtenerPeliculaPorId(this.id).subscribe(dato=>{
       this.pelicula= dato;
+      this.calificacionTotal= this.pelicula.calificacion/this.pelicula.totalVotos;
       this.peliculaService.getImage(this.pelicula.imagen).subscribe(dato=>{
         this.retrieveResonse = dato;
         console.log(dato);
@@ -44,6 +44,14 @@ export class PeliculaDetallesComponent implements OnInit {
 
 
   }
+
+  calificar(){
+    this.peliculaService.guardarCalificacion(this.calificacion,this.id).subscribe(dato=>{
+     window.location.reload();
+    })
+  }
+
+
 
   mostrarTrailer(){
     this.trailer=true;

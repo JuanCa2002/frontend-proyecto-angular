@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {PeliculaService} from "../../services/pelicula.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Pelicula} from "../../pelicula";
+import {Pelicula} from "../../models/pelicula";
 import swal from "sweetalert2";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {GeneroService} from "../../services/genero.service";
+import {Genero} from "../../models/genero";
 
 @Component({
   selector: 'app-actualizar-pelicula',
@@ -13,6 +15,9 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class ActualizarPeliculaComponent implements OnInit {
 
   id:number;
+  idGenero:number;
+  generos:Genero[];
+  genero:Genero= new Genero();
   idVideo:string;
   url:string;
   formReactive:FormGroup;
@@ -22,7 +27,7 @@ export class ActualizarPeliculaComponent implements OnInit {
   pelicula:Pelicula= new Pelicula();
 
   constructor(private peliculaService:PeliculaService, private router:Router, private activatedRoute:ActivatedRoute,
-              private formBuilder:FormBuilder) { }
+              private formBuilder:FormBuilder, private generoService:GeneroService) { }
 
   ngOnInit(): void {
     const tag = document.createElement('script');
@@ -35,6 +40,7 @@ export class ActualizarPeliculaComponent implements OnInit {
     }, error => {
       console.log(error);
     });
+    this.listarGeneros();
   }
 
   selectFile(event) {
@@ -47,6 +53,12 @@ export class ActualizarPeliculaComponent implements OnInit {
     this.router.navigate(['/peliculas']);
   }
 
+  listarGeneros(){
+    this.generoService.obtenerListaGeneros().subscribe(dato=>{
+      this.generos= dato;
+    });
+  }
+
   actualizarPelicula(){
     if(this.formReactive.invalid){
       swal(
@@ -56,24 +68,32 @@ export class ActualizarPeliculaComponent implements OnInit {
       )
     }
     else{
-      if(this.file!=null){
-        this.peliculaService.deleteImage(this.pelicula.imagen).subscribe(dato=>{
+      if(this.idGenero!=null){
+        this.generoService.obtenerGeneroPorId(this.idGenero).subscribe(dato=>{
+          this.genero= dato;
+          this.pelicula.genero= this.genero;
+          if(this.file!=null){
+            this.peliculaService.deleteImage(this.pelicula.imagen).subscribe(dato=>{
+            });
+            this.peliculaService.uploadImage(this.file,this.file.name).subscribe(dato=>{
+            });
+            this.pelicula.imagen= this.file.name;
+          }
+          if(this.idVideo!=null){
+            this.pelicula.urlVideo=this.idVideo;
+          }
+          console.log(this.pelicula.genero)
+          this.peliculaService.actualizarPelicula(this.id,this.pelicula).subscribe(dato=>{
+            this.irListaPeliculas();
+            swal(
+              'Película actualizada!',
+              'La película fue actualizada con éxito!',
+              'success'
+            )
+          })
         });
-        this.peliculaService.uploadImage(this.file,this.file.name).subscribe(dato=>{
-        });
-        this.pelicula.imagen= this.file.name;
       }
-      if(this.idVideo!=null){
-        this.pelicula.urlVideo=this.idVideo;
-      }
-      this.peliculaService.actualizarPelicula(this.id,this.pelicula).subscribe(dato=>{
-        this.irListaPeliculas();
-      swal(
-        'Película actualizada!',
-        'La película fue actualizada con éxito!',
-        'success'
-      )
-    })
+
   }
   }
 

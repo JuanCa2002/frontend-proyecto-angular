@@ -1,0 +1,14 @@
+<app-navbar></app-navbar>
+<form [formGroup]="formReactive" (ngSubmit)="actualizarGenero()">
+  <div class="mb-3">
+    <label for="nombreGenero" class="form-label">Nombre del genero:</label>
+    <input type="text"
+           name="nombreGenero"
+           [(ngModel)]="genero.nombreGenero"
+           formControlName="nombre"
+           class="form-control"
+           id="nombreGenero"
+           placeholder="ejemplo:Aventura">
+  </div>
+  <button type="submit" class="btn btn-success">Registrar</button>
+</form>

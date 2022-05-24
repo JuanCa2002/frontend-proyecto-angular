@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {PeliculaService} from "../../services/pelicula.service";
-import {Pelicula} from "../../pelicula";
+import {Pelicula} from "../../models/pelicula";
 
 @Component({
   selector: 'app-buscador',

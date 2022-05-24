@@ -15,10 +15,18 @@ import {PerfilComponent} from "./components/perfil/perfil.component";
 import {AdministrarContrasenaComponent} from "./components/administrar-contrasena/administrar-contrasena.component";
 import {SendEmailComponent} from "./components/changePassword/send-email/send-email.component";
 import {ChangePasswordComponent} from "./components/changePassword/change-password/change-password.component";
+import {EstadisticasComponent} from "./components/estadisticas/estadisticas.component";
+import {RegistrarGeneroComponent} from "./components/registrar-genero/registrar-genero.component";
+import {ListGendersComponent} from "./components/list-genders/list-genders.component";
+import {ActualizarGeneroComponent} from "./components/actualizar-genero/actualizar-genero.component";
 
 
 const routes: Routes = [
+  {path:'generos',component:ListGendersComponent},
+  {path:'actualizar-genero/:id',component:ActualizarGeneroComponent},
+  {path:'registrar-genero', component: RegistrarGeneroComponent},
   {path:'sendEmail',component:SendEmailComponent},
+  {path:'estadisticas', component: EstadisticasComponent},
   {path:'changePassword/:tokenPassword',component:ChangePasswordComponent},
   {path:'administrar-contrasena',component:AdministrarContrasenaComponent},
   {path:'login',component:LoginComponent},

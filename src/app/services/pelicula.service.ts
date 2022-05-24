@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Pelicula} from "../pelicula";
+import {Pelicula} from "../models/pelicula";
 import {Byte} from "@angular/compiler/src/util";
 
 
@@ -19,7 +19,7 @@ export class PeliculaService {
     return this.httpClient.get<Pelicula[]>(`${this.baseUrl}`);
   }
 
-  obtenerListadoPeliculasPorGenero(genero:string):Observable<Pelicula[]>{
+  obtenerListadoPeliculasPorGenero(genero:number):Observable<Pelicula[]>{
     return this.httpClient.get<Pelicula[]>(`${this.baseUrl}/genero/${genero}`);
   }
 
@@ -74,6 +74,17 @@ export class PeliculaService {
 
   obtenerListadoPeliculasPorEstado(estado:string):Observable<Pelicula[]>{
     return this.httpClient.get<Pelicula[]>(`${this.baseUrl}/estado/${estado}`);
+  }
+
+  guardarCalificacion(calificacion:number, id:number):Observable<any>{
+    const updatedCalificacion = new FormData();
+    // @ts-ignore
+    updatedCalificacion.append("calificacion", calificacion);
+    return this.httpClient.put<Pelicula[]>(`${this.baseUrl}/calificacion/${id}`,updatedCalificacion);
+  }
+
+  obtenerCantidadPeliculasPorEstado(estado:string):Observable<number>{
+    return this.httpClient.get<number>(`${this.baseUrl}/contar/${estado}`);
   }
 
 

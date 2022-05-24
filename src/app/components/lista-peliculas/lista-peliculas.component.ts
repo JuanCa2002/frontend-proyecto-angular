@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {Pelicula} from "../../pelicula";
+import {Pelicula} from "../../models/pelicula";
 import {PeliculaService} from "../../services/pelicula.service";
 import {Router} from "@angular/router";
 import swal from "sweetalert2";
+import {MatPaginatorIntl, PageEvent} from "@angular/material/paginator";
+import {GeneroService} from "../../services/genero.service";
+import {Genero} from "../../models/genero";
 
 @Component({
   selector: 'app-lista-peliculas',
@@ -12,17 +15,31 @@ import swal from "sweetalert2";
 export class ListaPeliculasComponent implements OnInit {
 
   peliculas:Pelicula[];
-  selector:string="0";
+  generos:Genero[];
+  i:number=1;
+  pageSize= 7;
+  desde:number=0;
+  hasta:number=7;
+  selector:number=0;
 
-  constructor(private peliculaService:PeliculaService, private router:Router) { }
+  constructor(private peliculaService:PeliculaService, private router:Router, private paginator: MatPaginatorIntl,
+              private  generoService:GeneroService) {
+    this.paginator.itemsPerPageLabel= "Cantidad paginas:";
+  }
 
   ngOnInit(): void {
     this.listarPeliculas();
+    this.listarGenerosFiltro();
+  }
 
+  listarGenerosFiltro(){
+    this.generoService.obtenerListaGeneros().subscribe(dato=>{
+      this.generos= dato;
+    })
   }
 
   removeFilter(){
-    this.selector="0";
+    this.selector=0;
     this.listarPeliculas();
   }
 
@@ -32,7 +49,7 @@ export class ListaPeliculasComponent implements OnInit {
     });
   }
 
-  listarPeliculasPorGenero(selector:string){
+  listarPeliculasPorGenero(selector:number){
     this.peliculaService.obtenerListadoPeliculasPorGenero(selector).subscribe((dato =>{
       this.peliculas=dato;
     }))
@@ -72,6 +89,16 @@ export class ListaPeliculasComponent implements OnInit {
 
   mostrarDetallesPelicula(id:number){
     this.router.navigate(['detalles-pelicula',id]);
+  }
+
+  cambiarPagina(e:PageEvent){
+    console.log(e);
+    this.desde=e.pageIndex * e.pageSize;
+    this.hasta= this.desde + e.pageSize;
+  }
+
+  registrarPelicula(){
+    this.router.navigate(['registrar-pelicula']);
   }
 
 

@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <h1 class="text-center">Gestion Generos</h1>
+<div class="row mt-5">
+  <div class="col-3"></div>
+  <div class="col-6">
+    <form [formGroup]="formReactive" (ngSubmit)="guardarGenero()">
+      <div class="mb-3 ">
+        <label for="nombreGenero" class="form-label mb-3">Nombre del genero:</label>
+        <input type="text"
+               name="nombreGenero"
+               [(ngModel)]="genero.nombreGenero"
+               formControlName="nombre"
+               class="form-control"
+               id="nombreGenero"
+               placeholder="Ejemplo:Aventura">
+      </div>
+      <div class="text-center d-grid gap-2">
+        <button type="submit" class="btn btn-success mt-3">Registrar</button>
+      </div>
+
+    </form>
+  </div>
+  <div class="col-3"></div>
+</div>
+
+</div>

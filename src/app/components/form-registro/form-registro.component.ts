@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, NgForm, Validators} from "@angular/forms";
-import {Pelicula} from "../../pelicula";
+import {Pelicula} from "../../models/pelicula";
 import {PeliculaService} from "../../services/pelicula.service";
 import {Router} from "@angular/router";
 import swal from "sweetalert2";
+import {Genero} from "../../models/genero";
+import {GeneroService} from "../../services/genero.service";
 
 @Component({
   selector: 'app-form-registro',
@@ -13,6 +15,7 @@ import swal from "sweetalert2";
 export class FormRegistroComponent implements OnInit {
 
   idVideo:string;
+  generos:Genero[];
   urlVideo:string;
   url:any;
   formReactive:FormGroup;
@@ -21,8 +24,10 @@ export class FormRegistroComponent implements OnInit {
   pelicula: Pelicula= new Pelicula();
 
 
-  constructor(private peliculaService:PeliculaService, private router:Router, private formBuilder: FormBuilder) {
+  constructor(private peliculaService:PeliculaService, private router:Router, private formBuilder: FormBuilder,
+              private generoService:GeneroService) {
     this.crearFormulario();
+    this.listarGeneros();
 
   }
 
@@ -35,6 +40,12 @@ export class FormRegistroComponent implements OnInit {
   selectFile(event) {
     this.selectFiles = event.target.files;
     this.file = this.selectFiles.item(0);
+  }
+
+  listarGeneros(){
+    this.generoService.obtenerListaGeneros().subscribe(dato=>{
+      this.generos= dato;
+    })
   }
 
 
@@ -146,6 +157,8 @@ export class FormRegistroComponent implements OnInit {
   GFG_Fun() {
     this.idVideo = this.urlVideo.split("v=")[1].substring(0, 11);
   }
+
+
 
 
 

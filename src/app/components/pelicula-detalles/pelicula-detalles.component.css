@@ -17,12 +17,65 @@ h1{
   font-size: 40px;
 }
 
+
+
 .contenedor{
   background-color: var(--fondo);
+}
+
+.total-votos{
+  color:white;
 }
 
 .cuerpo{
   margin-right: 100px;
   margin-bottom: 100px;
   margin-left: 100px;
+}
+
+#form {
+  width: 250px;
+  margin: 0 auto;
+  margin-right: 800px;
+  height: 50px;
+}
+
+#form p {
+  text-align: center;
+}
+
+#form label {
+  font-size: 60px;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+label {
+  color: grey;
+}
+
+.clasificacion {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
+
+label:hover,
+label:hover ~ label {
+  color: orange;
+}
+
+.label-estrella{
+  font-size: 60px;
+  color: orange;
+}
+
+.calificacion{
+  color: white;
+  font-size: 60px;
+}
+
+input[type="radio"]:checked ~ label {
+  color: orange;
 }

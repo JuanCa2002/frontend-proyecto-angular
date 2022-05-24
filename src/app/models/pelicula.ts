@@ -1,3 +1,5 @@
+import {Genero} from "./genero";
+
 export class Pelicula {
   id:number;
   titulo: string;
@@ -6,8 +8,10 @@ export class Pelicula {
   presupuesto: string;
   descripcion: string;
   imagen:string;
-  genero:string;
+  genero:Genero= new Genero();
   estado:string;
   urlVideo:string;
+  totalVotos:number;
+  calificacion:number;
   retrieveImage:any;
 }

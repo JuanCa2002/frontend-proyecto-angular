@@ -35,5 +35,9 @@ export class AuthService {
     return this.httpClient.put<any>(`${this.authURL}updateContrasena/${nombreUsuario}`,formData);
   }
 
+  public getUserAmountForYear(year:number):Observable<number>{
+    return this.httpClient.get<number>(`${this.authURL}usuarios/year/${year}`);
+  }
+
 
 }

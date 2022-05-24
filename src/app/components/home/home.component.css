@@ -1,3 +1,15 @@
+.contenedor-main{
+  font-size: 16px;
+  min-height: 42.62em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  margin-bottom: 3.12em;
+  align-items: end;
+
+  background-image:linear-gradient(rgba(0,0,0,.50) 100%,rgba(0,0,0, .50) 100%);
+}
+
 .contenedor{
   width: 98%;
   margin: auto;
@@ -23,8 +35,6 @@ main{
   font-size: 16px;
   min-height: 42.62em;
   color: #fff;
-  background: linear-gradient(rgba(0,0,0,.50) 50%,rgba(0,0,0, .50) 100%);
-  background-image:linear-gradient(rgba(0,0,0,.50) 100%,rgba(0,0,0, .50) 100%);
   background-position: center center;
   background-size: cover;
   margin-bottom: 3.12em;

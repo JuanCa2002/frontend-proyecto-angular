@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+<div class="contenedor">
+  <div class="row">
+    <div class="col-6 usuarios">
+      <div class="card" style="width: 30rem;">
+        <div class="card-body">
+          <h5 class="card-title text-center">Numero de usuarios : </h5>
+          <p class="card-text text-center">{{cantidadTotalUsuarios}} <i class="fas fa-user-astronaut"></i></p>
+          <div>
+            <div style="display: block" >
+              <canvas baseChart *ngIf="cargar"
+                      [data]="barChartData"
+                      [options]="barChartOptions"
+                      [type]="barChartType"
+                      (chartHover)="chartHovered($event)"
+                      (chartClick)="chartClicked($event)">
+              </canvas>
+            </div>
+            <div class="text-center">
+              <button *ngIf="!cargar" class="btn btn-primary" (click)="cargarGrafica()">Mostrar</button>
+              <button *ngIf="cargar"  class="btn btn-primary" (click)="ocultarGrafica()">Ocultar</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 peliculas">
+      <div class="card" style="width:  30rem;">
+        <div class="card-body">
+          <h5 class="card-title text-center">Cantidad peliculas:</h5>
+          <p class="card-text text-center">{{totalPeliculas}} <i class="fas fa-file-video"></i></p>
+          <div>
+            <div>
+              <div class="chart">
+                <canvas baseChart *ngIf="calcularPeliculas"
+                        [data]="pieChartData"
+                        [type]="pieChartType"
+                        [options]="pieChartOptions"
+                >
+                </canvas>
+              </div>
+              <div class="text-center">
+                <button *ngIf="!calcularPeliculas" class="btn btn-primary" (click)="cargarGraficaPeliculas()">Mostrar</button>
+                <button *ngIf="calcularPeliculas"  class="btn btn-primary" (click)="ocultarGraficaPeliculas()">Ocultar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

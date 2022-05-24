@@ -88,21 +88,16 @@
 
   <div class="form-group mt-3">
     <label for="genero" class="form-label">Genéro de la película</label>
-    <select class="form-select"
+    <select  class="form-select"
             id="genero"
             name="genero"
             [(ngModel)]="pelicula.genero"
             formControlName="genero"
             >
-      <option selected>Seleccione un genéro </option>
-      <option value="Accion">Acción</option>
-      <option value="Aventura">Aventura</option>
-      <option value="Comedia">Comedia</option>
-      <option value="Drama">Drama</option>
-      <option value="Fantasia">Fantasía</option>
-      <option value="Musical">Musical</option>
-      <option value="Horror">Horror</option>
-      <option value="Suspenso">Suspenso</option>
+        <option selected>Seleccione un genéro </option>
+        <option *ngFor="let genero of generos" [value]="genero" >
+          {{genero.nombreGenero}}
+        </option>
     </select>
     <small *ngIf="descripcionNoValido" class="form-text text-danger">
       Ingrese mínimo 10 carácteres

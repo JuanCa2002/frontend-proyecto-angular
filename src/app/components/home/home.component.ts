@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Pelicula} from "../../pelicula";
+import {Pelicula} from "../../models/pelicula";
 import {PeliculaService} from "../../services/pelicula.service";
 import {Router} from "@angular/router";
 
@@ -138,8 +138,8 @@ export class HomeComponent implements OnInit {
 
   cambiarImagen(name:string){
     let nombre= 'linear-gradient(rgba(0,0,0,.50) 100%,rgba(0,0,0, .50) 100%), url("'+name+'")';
-    console.log(nombre);
     document.getElementById("pelicula-principal").style.setProperty('background-image', nombre);
+    document.getElementById("pelicula-principal2").style.setProperty('background-image', nombre);
   }
 
 

@@ -4,5 +4,6 @@ export class NuevoUsuario {
   email:string;
   password:string;
   nombre_imagen:string;
+  fecha_creacion:Date;
   authorities:string[];
 }

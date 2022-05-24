@@ -86,7 +86,8 @@ h5{
 
 a {
    text-decoration: none;
-
+   font-weight: bold;
+   font-size: 20px;
 }
 
 header{

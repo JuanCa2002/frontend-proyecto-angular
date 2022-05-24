@@ -6,14 +6,16 @@
     <br>
   <h1 class="text-center"> {{pelicula.titulo}}</h1>
 <div class="row mt-3 ">
-  <div class="col-5">
+  <div class="col-5 ">
     <div class="card " style="width: 25rem;">
       <img class="card-img-top " [src]="retrievedImage" height="560" width="500" alt="Card image cap">
     </div>
     <br>
     <br>
+    <br>
+    <br>
     <h3>Trailer</h3>
-    <youtube-player id="trailer" videoId="{{pelicula.urlVideo}}" [playerVars]="playerConfig" [height]="560" [width]="1160"></youtube-player>
+    <youtube-player  id="trailer" videoId="{{pelicula.urlVideo}}" [playerVars]="playerConfig" [height]="560" [width]="1160"></youtube-player>
   </div>
   <div class="col-7">
     <div class="card">
@@ -24,19 +26,54 @@
           <li class="list-group-item"><strong>Director:</strong> {{pelicula.director}}</li>
           <li class="list-group-item"><strong>Año de estreno:</strong> {{pelicula.fecha_estreno}}</li>
           <li class="list-group-item"><strong>Presupuesto:</strong> {{pelicula.presupuesto}}</li>
-          <li class="list-group-item"><strong>Género:</strong> {{pelicula.genero}}</li>
+          <li class="list-group-item"><strong>Género:</strong> {{pelicula.genero.nombreGenero}}</li>
           <li class="list-group-item"><strong>Estado:</strong> {{pelicula.estado}}</li>
         </ul>
     </div>
 
     </div>
-  </div>
+    <h3 class="mt-3">Danos tu opinion acerca de esta pelicula!</h3>
+    <div class="row mt-1">
+    <div class="col-6 ">
+      <form  id="form" (ngSubmit)="calificar()" >
+          <p class="clasificacion">
+            <input id="radio1" type="radio" name="estrellas" value="5" [(ngModel)]="calificacion" ><!--
+    --><label for="radio1">★</label><!--
+    --><input id="radio2" type="radio" name="estrellas" value="4" [(ngModel)]="calificacion"><!--
+    --><label for="radio2">★</label><!--
+    --><input id="radio3" type="radio" name="estrellas" value="3" [(ngModel)]="calificacion"><!--
+    --><label for="radio3">★</label><!--
+    --><input id="radio4" type="radio" name="estrellas" value="2" [(ngModel)]="calificacion"><!--
+    --><label for="radio4">★</label><!--
+    --><input id="radio5" type="radio" name="estrellas" value="1" [(ngModel)]="calificacion"><!--
+    --><label  for="radio5">★</label>
+          </p>
+          <button type="submit" class="btn btn-primary"> Calificar</button>
+        </form>
+    </div>
+      <div class="col-6">
+        <div class="row ">
+          <div class="col">
+            <div class="row">
+              <div class="col-2">
+                <label class="label-estrella">★</label>
+              </div>
+              <div class="col-10 mt-2">
+                <h5 class="calificacion"> {{calificacionTotal|number:'1.1-2'}}</h5>
+              </div>
+            </div>
+          </div>
+          <p class="total-votos"> {{pelicula.totalVotos}} votos</p>
+        </div>
+      </div>
+    </div>
 </div>
 </div>
 <br>
 <br>
-</div>
 
+</div>
+</div>
 
 
 
