@@ -27,7 +27,7 @@ export class ListGendersComponent implements OnInit {
 
   eliminarGenero(id:number){
     swal({
-      title: '¿Estás seguro de eliminar el genero?',
+      title: '¿Estás seguro de eliminar el género?',
       text: "Una vez se elimine no se pódra recuperar la información!",
       type: 'warning',
       showCancelButton: true,
@@ -40,8 +40,8 @@ export class ListGendersComponent implements OnInit {
           this.listarGeneros();
         });
         swal(
-          'Genero eliminada',
-          'El genero fue eliminada con éxito',
+          'Género eliminado',
+          'El género fue eliminado con éxito',
           'success'
         )
       }

@@ -49,8 +49,8 @@ export class ActualizarGeneroComponent implements OnInit {
     }else{
       this.generoService.actualizarGeneros(this.id, this.genero).subscribe(dato=>{
         swal(
-          'Genero actualizada!',
-          'El genero fue actualizado con éxito!',
+          'Género actualizado!',
+          'El género fue actualizado con éxito!',
           'success'
         )
         this.irListaGeneros();

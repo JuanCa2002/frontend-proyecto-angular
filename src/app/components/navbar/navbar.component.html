@@ -14,10 +14,10 @@
               <a class="nav-link" routerLink="/peliculas"  >Películas</a>
             </li>
             <li class="nav-item mt-1" *ngIf="isAdmin">
-              <a class="nav-link" routerLink="/generos" >Generos</a>
+              <a class="nav-link" routerLink="/generos" >Géneros</a>
             </li>
             <li class="nav-item mt-1" *ngIf="isAdmin">
-              <a class="nav-link" routerLink="/estadisticas"  >Estadisticas</a>
+              <a class="nav-link" routerLink="/estadisticas"  >Estadísticas</a>
             </li>
             <form class="d-flex" *ngIf="isLogged">
               <input class="buscar form-control me-2" type="search" placeholder="  Buscar película" (keyup.enter)="buscarPelicula(buscarTexto.value)" #buscarTexto>

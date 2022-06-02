@@ -24,7 +24,7 @@ export class ListaPeliculasComponent implements OnInit {
 
   constructor(private peliculaService:PeliculaService, private router:Router, private paginator: MatPaginatorIntl,
               private  generoService:GeneroService) {
-    this.paginator.itemsPerPageLabel= "Cantidad paginas:";
+    this.paginator.itemsPerPageLabel= "Cantidad páginas:";
   }
 
   ngOnInit(): void {
